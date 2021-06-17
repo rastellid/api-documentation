@@ -3,6 +3,7 @@
 $finder = PhpCsFixer\Finder::create()
     ->in('bin')
     ->in('src')
+    ->in('migrations')
     ->exclude('vendor')
 ;
 
