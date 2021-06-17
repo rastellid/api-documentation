@@ -2,3 +2,15 @@ parameters:
 
 services:
 
+  App\Infrastructure\Database\Book\Command\BookRepository:
+    class: App\Infrastructure\Database\Book\Command\BookRepository
+
+  App\Domain\Books\Command\BookRepository:
+    alias: '@App\Infrastructure\Database\Book\Command\BookRepository'
+
+
+  App\Infrastructure\Database\Book\QueryModel\BookRepository:
+    class: App\Infrastructure\Database\Book\QueryModel\BookRepository
+
+  App\Domain\Books\QueryModel\BookRepository:
+    alias: '@App\Infrastructure\Database\Book\QueryModel\BookRepository'

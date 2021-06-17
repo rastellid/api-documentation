@@ -33,9 +33,3 @@ services:
         namespace: App\Infrastructure\Ports\REST\Book\Controller\
         resource: '../src/Infrastructure/Ports/REST/Book/Controller/'
         tags: [controller.service_arguments]
-
-    App\Infrastructure\Database\Book\Command\BookRepository:
-        class: App\Infrastructure\Database\Book\Command\BookRepository
-
-    App\Domain\Books\Command\BookRepository:
-        alias: '@App\Infrastructure\Database\Book\Command\BookRepository'
