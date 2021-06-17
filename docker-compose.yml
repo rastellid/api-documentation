@@ -22,3 +22,13 @@ services:
       DATABASE_URL: ""
     volumes:
       - ./app:/var/www/app
+
+  graph_db:
+    image: mysql:8
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: graphql
+      MYSQL_USER: graphql
+      MYSQL_PASSWORD: graphql
