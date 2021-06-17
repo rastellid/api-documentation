@@ -12,3 +12,6 @@ php-cs-check:
 
 php-cs-fix:
 	docker exec 01-graphql_graph_php_1 /bin/bash -c "cd /var/www/app && php-cs-fixer fix -v"
+
+php-psalm:
+	docker exec 01-graphql_graph_php_1 /bin/bash -c "cd /var/www/app && vendor/bin/psalm"

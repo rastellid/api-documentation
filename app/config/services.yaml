@@ -17,6 +17,15 @@ services:
         resource: '../src/'
         exclude:
             - '../src/Kernel.php'
+            - '../src/Domain/'
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+    App\Application\Command\:
+        resource: '../src/Application/Command/*/*Handler.php'
+        tags: [messenger.message_handler]
+
+    controller:
+        namespace: App\Infrastructure\Ports\REST\Book\Controller\
+        resource: '../src/Infrastructure/Ports/REST/Book/Controller/'
+        tags: [controller.service_arguments]
