@@ -13,7 +13,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class BookController
 {
     #[Route(path: 'add-book', methods: ['POST'])]
-    public function second(MessageBusInterface $bus, Request $request): JsonResponse
+    public function addBookAction(MessageBusInterface $bus, Request $request): JsonResponse
     {
         $book = json_decode($request->getContent(), true);
 
