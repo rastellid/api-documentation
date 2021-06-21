@@ -14,7 +14,7 @@ class BookRepository implements \App\Domain\Books\QueryModel\BookRepository
     ) {
     }
 
-    /** @return array<array-key, Book> */
+    /** @return array<int, Book> */
     public function all(): array
     {
         $dql = $this->entityManager->createQuery(<<<DQL

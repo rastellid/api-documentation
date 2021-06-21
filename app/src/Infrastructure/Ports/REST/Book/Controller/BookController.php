@@ -10,18 +10,17 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Messenger\MessageBusInterface;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Serializer\SerializerInterface;
 
 #[Route(path: '/books')]
 class BookController
 {
     #[Route(path: '/add', methods: ['POST'])]
-    public function addBookAction(MessageBusInterface $bus, Request $request): JsonResponse
+    public function addBookAction(MessageBusInterface $bus, Request $request, SerializerInterface $serializer): JsonResponse
     {
-        $data = $request->getContent();
+        $book = $serializer->deserialize($request->getContent(), CreateBooks::class, 'json');
 
-        $book = json_decode($data, true);
-
-        $bus->dispatch(new CreateBooks(...$book));
+        $bus->dispatch($book);
 
         return new JsonResponse('OK in POST');
     }
