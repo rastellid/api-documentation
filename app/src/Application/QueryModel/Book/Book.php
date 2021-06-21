@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace App\Application\QueryModel\Book;
 
+/**
+ * @psalm-immutable
+ */
 class Book implements \JsonSerializable
 {
     public function __construct(

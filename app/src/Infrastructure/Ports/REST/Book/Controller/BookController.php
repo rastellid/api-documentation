@@ -17,7 +17,9 @@ class BookController
     #[Route(path: '/add', methods: ['POST'])]
     public function addBookAction(MessageBusInterface $bus, Request $request): JsonResponse
     {
-        $book = json_decode($request->getContent(), true);
+        $data = $request->getContent();
+
+        $book = json_decode($data, true);
 
         $bus->dispatch(new CreateBooks(...$book));
 

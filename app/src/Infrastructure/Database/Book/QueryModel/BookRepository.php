@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Infrastructure\Database\Book\QueryModel;
 
+use App\Application\QueryModel\Book\Book;
 use Doctrine\ORM\EntityManagerInterface;
 
 class BookRepository implements \App\Domain\Books\QueryModel\BookRepository
@@ -13,6 +14,7 @@ class BookRepository implements \App\Domain\Books\QueryModel\BookRepository
     ) {
     }
 
+    /** @return array<array-key, Book> */
     public function all(): array
     {
         $dql = $this->entityManager->createQuery(<<<DQL
