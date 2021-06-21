@@ -11,11 +11,13 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Messenger\MessageBusInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Serializer\SerializerInterface;
+use OpenApi\Annotations as OA;
 
-#[Route(path: '/books')]
 class BookController
 {
-    #[Route(path: '/add', methods: ['POST'])]
+    /**
+     * @Route ("/api/books", name="new_book", methods={"POST"})
+     */
     public function addBookAction(MessageBusInterface $bus, Request $request, SerializerInterface $serializer): JsonResponse
     {
         $book = $serializer->deserialize($request->getContent(), CreateBooks::class, 'json');
@@ -25,7 +27,14 @@ class BookController
         return new JsonResponse('OK in POST');
     }
 
-    #[Route(path: '/all', methods: ['GET'])]
+    /**
+     * @Route ("/api/books", name="get_all_books", methods={"GET"})
+     * @OA\Response(
+     *     response=200,
+     *     description="Returns the rewards of an user",
+     * )
+     *
+     */
     public function allBooksAction(BookRepository $bookRepository): JsonResponse
     {
        return new JsonResponse($bookRepository->all());
