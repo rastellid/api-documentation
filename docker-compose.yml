@@ -1,34 +1,35 @@
 version: "3.9"
 services:
-
-  graph_nginx:
+  app_nginx:
+    container_name: app_nginx
     build:
       context: ./docker/nginx
     ports:
       - 8080:80
     environment:
-      PHP_FPM_IP: graph_php
+      PHP_FPM_IP: app_php
       PHP_FPM_PORT: 9000
     volumes:
       - ./app:/var/www/app
     links:
-      - graph_php
+      - app_php
     working_dir: /var/www/app
 
-  graph_php:
+  app_php:
+    container_name: app_php
     build:
       context: ./docker/php
-    environment:
-      DATABASE_URL: ""
     volumes:
       - ./app:/var/www/app
 
-  graph_db:
+  app_db:
+    container_name: app_db
     image: mysql:8
+    command: --default-authentication-plugin=mysql_native_password
     ports:
       - 3306:3306
     environment:
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: graphql
-      MYSQL_USER: graphql
-      MYSQL_PASSWORD: graphql
+      MYSQL_DATABASE: app
+      MYSQL_USER: app
+      MYSQL_PASSWORD: app

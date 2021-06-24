@@ -15,9 +15,7 @@ use OpenApi\Annotations as OA;
 
 class BookController
 {
-    /**
-     * @Route ("/api/books", name="new_book", methods={"POST"})
-     */
+    #[Route('/api/books', name: 'new_book', methods: ['POST'])]
     public function addBookAction(MessageBusInterface $bus, Request $request, SerializerInterface $serializer): JsonResponse
     {
         $book = $serializer->deserialize($request->getContent(), CreateBooks::class, 'json');

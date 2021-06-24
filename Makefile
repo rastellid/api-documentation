@@ -5,13 +5,13 @@ stop:
 	docker-compose stop
 
 php-shell:
-	docker exec -it 01-graphql_graph_php_1 /bin/bash
+	docker exec -it app_php /bin/bash
 
 php-cs-check:
-	docker exec 01-graphql_graph_php_1 /bin/bash -c "cd /var/www/app && php-cs-fixer fix --dry-run -v"
+	docker exec app_php /bin/bash -c "cd /var/www/app && php-cs-fixer fix --dry-run -v"
 
 php-cs-fix:
-	docker exec 01-graphql_graph_php_1 /bin/bash -c "cd /var/www/app && php-cs-fixer fix -v"
+	docker exec app_php /bin/bash -c "cd /var/www/app && php-cs-fixer fix -v"
 
 php-psalm:
-	docker exec 01-graphql_graph_php_1 /bin/bash -c "cd /var/www/app && vendor/bin/psalm"
+	docker exec app_php /bin/bash -c "cd /var/www/app && vendor/bin/psalm"
