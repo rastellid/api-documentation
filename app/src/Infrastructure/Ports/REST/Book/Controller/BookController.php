@@ -34,14 +34,13 @@ class BookController
      *     description="Returns a list of books",
      *     @OA\JsonContent(
      *          type="array",
-     *          @OA\Items(ref=@Model(type=Book::class, groups={"full"}))
+     *          @OA\Items(ref="#/components/schemas/Book")
      *     )
      * )
      * @OA\Response(
      *     response="404",
      *     description="List of books not found"
      * )
-     *
      */
     public function allBooksAction(BookRepository $bookRepository): JsonResponse
     {

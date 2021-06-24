@@ -1,12 +1,21 @@
 nelmio_api_doc:
+  models: { use_jms: false }
   documentation:
     servers:
       - url: http://localhost:8080
         description: API over HTTP
     info:
-      title: My App
+      title: Api Document App Example
       description: This is an awesome app!
       version: 1.0.0
+    components:
+      schemas:
+        Book:
+          type: object
+          properties:
+            id:
+              type: string
+              example: 431231-asd12-1231
   areas:
     default:
       path_patterns: [^/api]

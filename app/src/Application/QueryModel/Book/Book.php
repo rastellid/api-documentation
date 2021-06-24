@@ -12,24 +12,26 @@ class Book implements \JsonSerializable
 {
     public function __construct(
         /**
-         * @var string
-         * @OA\Property(description="The unique identifier of the user.")
+         * @OA\Property(type="string", nullable=false, propertyNames="id")
+         * @var string $id
          */
         public string $id,
 
         /**
-         * @OA\Property(description="The unique identifier of the user.")
+         * @OA\Property(type="string", nullable=false, propertyNames="title")
+         * @var string $title
          */
         public string $title,
 
         /**
-         * @OA\Property(description="The unique identifier of the user.")
+         * @OA\Property(type="string", nullable=false, propertyNames="author")
+         * @var string $author
          */
         public string $author,
 
         /**
-         * @var string
-         * @OA\Property(description="The unique identifier of the user.")
+         * @OA\Property(type="string", nullable=false, propertyNames="price")
+         * @var float $price
          */
         public float $price
     ) {
