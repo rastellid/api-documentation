@@ -8,7 +8,6 @@ services:
   App\Domain\Books\Command\BookRepository:
     alias: '@App\Infrastructure\Database\Book\Command\BookRepository'
 
-
   App\Infrastructure\Database\Book\QueryModel\BookRepository:
     class: App\Infrastructure\Database\Book\QueryModel\BookRepository
 

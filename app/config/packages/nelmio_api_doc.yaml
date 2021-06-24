@@ -1,21 +1,14 @@
 nelmio_api_doc:
   documentation:
     servers:
-      - url: http://api.example.com/unsafe
+      - url: http://localhost:8080
         description: API over HTTP
-      - url: https://api.example.com/secured
-        description: API over HTTPS
     info:
       title: My App
       description: This is an awesome app!
       version: 1.0.0
-    components:
-      securitySchemes:
-        Bearer:
-          type: http
-          scheme: bearer
-          bearerFormat: JWT
-    security:
-      - Bearer: [ ]
   areas:
-    path_patterns: [ ^/api ]
+    default:
+      path_patterns: [^/api]
+    internal:
+      name_patterns: [internal]
