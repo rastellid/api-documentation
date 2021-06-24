@@ -11,6 +11,7 @@ services:
       PHP_FPM_PORT: 9000
     volumes:
       - ./app:/var/www/app
+      - ./docker/nginx/templates:/etc/nginx/templates:rw,cached
     links:
       - app_php
     working_dir: /var/www/app
