@@ -8,6 +8,9 @@ nelmio_api_doc:
       title: Api Document App Example
       description: This is an awesome app!
       version: 1.0.0
+    tags:
+      - name: "Book"
+        description: "Book api"
   areas:
     path_patterns:
-      - ^/api
+      - ^/api/book

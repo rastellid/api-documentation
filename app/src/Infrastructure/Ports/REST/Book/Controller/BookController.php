@@ -20,31 +20,43 @@ use Symfony\Component\Serializer\SerializerInterface;
 #[Route('/api', name: 'api')]
 class BookController
 {
-    #[Route('/books', name: 'new_book', methods: ['POST'])]
+    #[Route('/book', name: 'new_book', methods: ['POST'])]
+    /**
+     * @OA\RequestBody(
+     *     @OA\JsonContent(
+     *     ref=@Model(type=CreateBooks::class, groups={"book"}))
+     *     )
+     * ),
+     * @OA\Response(
+     *     response="201",
+     *     description="Book created"
+     * )
+     * @OA\Tag(name="Book")
+     */
     public function addBookAction(MessageBusInterface $bus, Request $request, SerializerInterface $serializer): Response
     {
         $book = $serializer->deserialize($request->getContent(), CreateBooks::class, 'json');
 
         $bus->dispatch($book);
 
-        return new JsonResponse('OK in POST');
+        return new JsonResponse('Book Created', 201);
     }
 
-    #[Route('/books', name: 'get_all_books', methods: ['GET'])]
-
+    #[Route('/book', name: 'get_all_books', methods: ['GET'])]
     /**
      * @OA\Response(
      *     response=200,
      *     description="Returns a list of books",
      *     @OA\JsonContent(
      *         type="array",
-     *         @OA\Items(ref=@Model(type=Book::class, groups={"default"}))
+     *         @OA\Items(ref=@Model(type=Book::class, groups={"book"}))
      *     )
      * )
      * @OA\Response(
      *     response="404",
      *     description="List of books not found"
-     * )
+     * ),
+     * @OA\Tag(name="Book")
      */
     public function allBooksAction(BookRepository $bookRepository): Response
     {
@@ -58,7 +70,7 @@ class BookController
      *     response=200,
      *     description="Return specific book",
      *     @OA\JsonContent(
-     *     ref=@Model(type=Book::class, groups={"default"}))
+     *     ref=@Model(type=Book::class, groups={"book"}))
      *     )
      * ),
      * @OA\Parameter(
@@ -70,7 +82,8 @@ class BookController
      * @OA\Response(
      *     response=404,
      *     description="Book not found"
-     * )
+     * ),
+     * @OA\Tag(name="Book")
      */
     public function bookAction(string $bookId, BookRepository $bookRepository): Response
     {
