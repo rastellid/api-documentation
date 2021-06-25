@@ -15,6 +15,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Messenger\MessageBusInterface;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Serializer\Exception\MissingConstructorArgumentsException;
 use Symfony\Component\Serializer\SerializerInterface;
 
 #[Route('/api', name: 'api')]
@@ -30,16 +31,25 @@ class BookController
      * @OA\Response(
      *     response="201",
      *     description="Book created"
+     * ),
+     * @OA\Response(
+     *     response="405",
+     *     description="Invalid Input"
      * )
      * @OA\Tag(name="Book")
      */
     public function addBookAction(MessageBusInterface $bus, Request $request, SerializerInterface $serializer): Response
     {
-        $book = $serializer->deserialize($request->getContent(), CreateBooks::class, 'json');
+        try {
+            $book = $serializer->deserialize($request->getContent(), CreateBooks::class, 'json');
 
-        $bus->dispatch($book);
+            $bus->dispatch($book);
 
-        return new JsonResponse('Book Created', 201);
+            return new JsonResponse('Book Created', 201);
+        }catch (MissingConstructorArgumentsException $e) {
+            return new JsonResponse('Invalid input', 405);
+        }
+
     }
 
     #[Route('/book', name: 'get_all_books', methods: ['GET'])]
