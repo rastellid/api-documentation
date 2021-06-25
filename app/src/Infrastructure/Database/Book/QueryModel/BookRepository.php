@@ -29,4 +29,25 @@ DQL);
 
         return $dql->getResult();
     }
+
+    /**
+     * @psalm-param  string $id
+     */
+    public function get(string $id): Book
+    {
+        $dql = $this->entityManager->createQuery(<<<DQL
+SELECT NEW App\Application\QueryModel\Book\Book(
+    b.id,
+    b.title,
+    b.author,
+    b.price
+)
+FROM App\Domain\Books\Book b
+WHERE b.id = :id
+DQL);
+
+        $dql->setParameter('id', $id);
+
+        return $dql->getSingleResult();
+    }
 }
