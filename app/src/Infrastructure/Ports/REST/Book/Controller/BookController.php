@@ -15,9 +15,10 @@ use Symfony\Component\Serializer\SerializerInterface;
 use OpenApi\Annotations as OA;
 use App\Application\QueryModel\Book\Book;
 
+#[Route('/api', name: 'api')]
 class BookController
 {
-    #[Route('/api/books', name: 'new_book', methods: ['POST'])]
+    #[Route('/books', name: 'new_book', methods: ['POST'])]
     public function addBookAction(MessageBusInterface $bus, Request $request, SerializerInterface $serializer): JsonResponse
     {
         $book = $serializer->deserialize($request->getContent(), CreateBooks::class, 'json');
@@ -27,7 +28,7 @@ class BookController
         return new JsonResponse('OK in POST');
     }
 
-    #[Route('/api/books', name: 'get_all_books', methods: ['GET'])]
+    #[Route('/books', name: 'get_all_books', methods: ['GET'])]
     /**
      * @OA\Response(
      *     response=200,
