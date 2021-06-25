@@ -22,11 +22,12 @@ use Symfony\Component\Serializer\SerializerInterface;
 class BookController
 {
     #[Route('/book', name: 'new_book', methods: ['POST'])]
+
     /**
      * @OA\RequestBody(
      *     @OA\JsonContent(
      *     ref=@Model(type=CreateBooks::class, groups={"book"}))
-     *     )
+     * )
      * ),
      * @OA\Response(
      *     response="201",
@@ -46,13 +47,13 @@ class BookController
             $bus->dispatch($book);
 
             return new JsonResponse('Book Created', 201);
-        }catch (MissingConstructorArgumentsException $e) {
+        } catch (MissingConstructorArgumentsException $e) {
             return new JsonResponse('Invalid input', 405);
         }
-
     }
 
     #[Route('/book', name: 'get_all_books', methods: ['GET'])]
+
     /**
      * @OA\Response(
      *     response=200,
@@ -74,14 +75,14 @@ class BookController
     }
 
     #[Route('/book/{bookId}', name: 'get_specific_book_by_id', methods: ['GET'])]
+
     /**
-     *
      * @OA\Response(
      *     response=200,
      *     description="Return specific book",
      *     @OA\JsonContent(
      *     ref=@Model(type=Book::class, groups={"book"}))
-     *     )
+     * )
      * ),
      * @OA\Parameter(
      *     description="Book id",
