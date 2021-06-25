@@ -34,7 +34,7 @@ class BookController
      *     description="Returns a list of books",
      *     @OA\JsonContent(
      *          type="array",
-     *          @OA\Items(ref="#/components/schemas/Book")
+     *          @OA\Items(ref=@Model(type=Book::class, groups={"default"}))
      *     )
      * )
      * @OA\Response(

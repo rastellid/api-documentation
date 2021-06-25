@@ -8,16 +8,6 @@ nelmio_api_doc:
       title: Api Document App Example
       description: This is an awesome app!
       version: 1.0.0
-    components:
-      schemas:
-        Book:
-          type: object
-          properties:
-            id:
-              type: string
-              example: 431231-asd12-1231
   areas:
-    default:
-      path_patterns: [^/api]
-    internal:
-      name_patterns: [internal]
+    path_patterns:
+      - ^/api
