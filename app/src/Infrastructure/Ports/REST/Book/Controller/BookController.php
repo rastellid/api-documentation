@@ -10,6 +10,7 @@ use App\Infrastructure\Database\Book\QueryModel\BookRepository;
 use Doctrine\ORM\NoResultException;
 use Nelmio\ApiDocBundle\Annotation\Model;
 use OpenApi\Annotations as OA;
+use Psr\Http\Message\ServerRequestInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -75,7 +76,6 @@ class BookController
     }
 
     #[Route('/book/{bookId}', name: 'get_specific_book_by_id', methods: ['GET'])]
-
     /**
      * @OA\Response(
      *     response=200,
@@ -103,5 +103,11 @@ class BookController
         } catch (NoResultException $e) {
             return new JsonResponse('Book not found', 404);
         }
+    }
+
+    #[Route('/psr7', name: 'test_psr_7', methods: ['GET'])]
+    public function psr7Action(ServerRequestInterface $request)
+    {
+        dump($request->ge());die;
     }
 }
