@@ -26,8 +26,8 @@ class BookController
     /**
      * @OA\RequestBody(
      *     @OA\JsonContent(
-     *     ref=@Model(type=CreateBooks::class, groups={"book"}))
-     * )
+     *          ref=@Model(type=CreateBooks::class, groups={"book"})
+     *     )
      * ),
      * @OA\Response(
      *     response="201",
@@ -81,8 +81,8 @@ class BookController
      *     response=200,
      *     description="Return specific book",
      *     @OA\JsonContent(
-     *     ref=@Model(type=Book::class, groups={"book"}))
-     * )
+     *          ref=@Model(type=Book::class, groups={"book"})
+     *     )
      * ),
      * @OA\Parameter(
      *     description="Book id",
