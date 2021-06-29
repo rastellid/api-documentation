@@ -1,0 +1,170 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Api Document App Example",
+    "description": "This is an awesome app!",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http:\/\/localhost:8080",
+      "description": "API over HTTP"
+    }
+  ],
+  "paths": {
+    "\/api\/book": {
+      "get": {
+        "tags": [
+          "Book"
+        ],
+        "operationId": null,
+        "responses": {
+          "200": {
+            "description": "Returns a list of books",
+            "content": {
+              "application\/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#\/components\/schemas\/Book"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "List of books not found"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Book"
+        ],
+        "operationId": null,
+        "requestBody": {
+          "content": {
+            "application\/json": {
+              "schema": {
+                "$ref": "#\/components\/schemas\/CreateBooks"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Book created"
+          },
+          "405": {
+            "description": "Invalid Input"
+          }
+        }
+      }
+    },
+    "\/api\/book\/{bookId}": {
+      "get": {
+        "tags": [
+          "Book"
+        ],
+        "operationId": null,
+        "parameters": [
+          {
+            "name": "bookId",
+            "in": "path",
+            "description": "Book id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Return specific book",
+            "content": {
+              "application\/json": {
+                "schema": {
+                  "$ref": "#\/components\/schemas\/Book"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Book not found"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Book": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "51deeb8c-7491-443e-9928-9146083c8981",
+            "nullable": false
+          },
+          "title": {
+            "type": "string",
+            "example": "Inferno",
+            "nullable": false
+          },
+          "author": {
+            "type": "string",
+            "example": "Down Brown",
+            "nullable": false
+          },
+          "price": {
+            "type": "string",
+            "example": "103.42",
+            "nullable": false
+          }
+        },
+        "type": "object",
+        "example": {
+          "id": "51deeb8c-7491-443e-9928-9146083c8981",
+          "title": "Inferno",
+          "author": "Down Brown",
+          "price": 103.4
+        }
+      },
+      "CreateBooks": {
+        "required": [
+          "title",
+          "author"
+        ],
+        "properties": {
+          "title": {
+            "type": "string",
+            "example": "Inferno",
+            "nullable": false
+          },
+          "author": {
+            "type": "string",
+            "example": "Down Brown",
+            "nullable": false
+          },
+          "price": {
+            "type": "string",
+            "example": "103.42",
+            "nullable": false
+          }
+        },
+        "type": "object",
+        "example": {
+          "title": "Inferno",
+          "author": "Down Brown",
+          "price": "103.40"
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Book",
+      "description": "Book api"
+    }
+  ]
+}
