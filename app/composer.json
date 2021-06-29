@@ -12,6 +12,7 @@
         "doctrine/doctrine-bundle": "^2.4",
         "doctrine/doctrine-migrations-bundle": "^3.1",
         "doctrine/orm": "^2.9",
+        "league/openapi-psr7-validator": "^0.16.1",
         "nelmio/api-doc-bundle": "^4.3",
         "nyholm/psr7": "^1.4",
         "phpdocumentor/reflection-docblock": "^5.2",
