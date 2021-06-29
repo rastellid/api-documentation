@@ -13,7 +13,7 @@ use OpenApi\Annotations as OA;
  *     @OA\Property(type="string", nullable=false, property="id", example="51deeb8c-7491-443e-9928-9146083c8981"),
  *     @OA\Property(type="string", nullable=false, property="title", example="Inferno"),
  *     @OA\Property(type="string", nullable=false, property="author", example="Down Brown"),
- *     @OA\Property(type="float", nullable=false, property="price", example="103.42"),
+ *     @OA\Property(type="string", nullable=false, property="price", example="103.42"),
  *     example={"id": "51deeb8c-7491-443e-9928-9146083c8981", "title": "Inferno", "author": "Down Brown", "price": 103.40}
  * )
  */
@@ -26,7 +26,7 @@ class Book implements \JsonSerializable
         public string $id,
         public string $title,
         public string $author,
-        public float $price
+        public string $price
     ) {
     }
 
