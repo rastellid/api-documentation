@@ -39,6 +39,6 @@ class CreateBooks
 
     public function price(): float
     {
-        return (float)$this->price;
+        return (float) $this->price;
     }
 }

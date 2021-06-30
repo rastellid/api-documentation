@@ -10,6 +10,7 @@ use OpenApi\Annotations as OA;
  * @psalm-immutable
  * @OA\Schema(
  *     type="object",
+ *     required={"title", "author", "price"},
  *     @OA\Property(type="string", nullable=false, property="id", example="51deeb8c-7491-443e-9928-9146083c8981"),
  *     @OA\Property(type="string", nullable=false, property="title", example="Inferno"),
  *     @OA\Property(type="string", nullable=false, property="author", example="Down Brown"),
@@ -20,9 +21,6 @@ use OpenApi\Annotations as OA;
 class Book implements \JsonSerializable
 {
     public function __construct(
-        /**
-         * @OA\Property(type="string", nullable=false, property="id", example="51deeb8c-7491-443e-9928-9146083c8981")
-         */
         public string $id,
         public string $title,
         public string $author,

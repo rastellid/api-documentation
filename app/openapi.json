@@ -99,6 +99,11 @@
   "components": {
     "schemas": {
       "Book": {
+        "required": [
+          "title",
+          "author",
+          "price"
+        ],
         "properties": {
           "id": {
             "type": "string",

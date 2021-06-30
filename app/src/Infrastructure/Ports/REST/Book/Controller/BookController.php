@@ -27,7 +27,7 @@ class BookController
     /**
      * @OA\RequestBody(
      *     @OA\JsonContent(
-     *          ref=@Model(type=CreateBooks::class, groups={"book"})
+     *         ref=@Model(type=CreateBooks::class, groups={"book"})
      *     )
      * ),
      * @OA\Response(
@@ -76,12 +76,13 @@ class BookController
     }
 
     #[Route('/book/{bookId}', name: 'get_specific_book_by_id', methods: ['GET'])]
+
     /**
      * @OA\Response(
      *     response=200,
      *     description="Return specific book",
      *     @OA\JsonContent(
-     *          ref=@Model(type=Book::class, groups={"book"})
+     *         ref=@Model(type=Book::class, groups={"book"})
      *     )
      * ),
      * @OA\Parameter(
@@ -108,6 +109,7 @@ class BookController
     #[Route('/psr7', name: 'test_psr_7', methods: ['GET'])]
     public function psr7Action(ServerRequestInterface $request)
     {
-        dump($request->ge());die;
+        dump($request->ge());
+        exit;
     }
 }
