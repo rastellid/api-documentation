@@ -72,7 +72,7 @@ class BookController
      */
     public function allBooksAction(BookRepository $bookRepository): Response
     {
-        return new JsonResponse($bookRepository->all());
+        return new JsonResponse($bookRepository->all(), 200);
     }
 
     #[Route('/book/{bookId}', name: 'get_specific_book_by_id', methods: ['GET'])]
