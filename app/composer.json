@@ -25,6 +25,7 @@
         "symfony/flex": "^1.13",
         "symfony/framework-bundle": "5.3.*",
         "symfony/messenger": "5.3.*",
+        "symfony/monolog-bundle": "^3.7",
         "symfony/property-access": "5.3.*",
         "symfony/property-info": "5.3.*",
         "symfony/proxy-manager-bridge": "5.3.*",
@@ -78,8 +79,14 @@
         }
     },
     "require-dev": {
+        "dama/doctrine-test-bundle": "^6.6",
         "doctrine/doctrine-fixtures-bundle": "^3.4",
+        "guzzlehttp/guzzle": "^7.0",
+        "phpunit/phpunit": "^9.5",
         "roave/security-advisories": "dev-latest",
+        "symfony/browser-kit": "^5.3",
+        "symfony/css-selector": "^5.3",
+        "symfony/phpunit-bridge": "^5.3",
         "vimeo/psalm": "^4.7"
     }
 }
