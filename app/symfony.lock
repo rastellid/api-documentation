@@ -220,6 +220,9 @@
     "phpdocumentor/type-resolver": {
         "version": "1.4.0"
     },
+    "phpro/api-problem": {
+        "version": "v1.4.1"
+    },
     "phpspec/prophecy": {
         "version": "1.13.0"
     },

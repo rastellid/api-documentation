@@ -16,6 +16,7 @@
         "nelmio/api-doc-bundle": "^4.3",
         "nyholm/psr7": "^1.4",
         "phpdocumentor/reflection-docblock": "^5.2",
+        "phpro/api-problem": "^1.4",
         "ramsey/uuid": "^4.1",
         "ramsey/uuid-doctrine": "^1.6",
         "sensio/framework-extra-bundle": "^6.1",
